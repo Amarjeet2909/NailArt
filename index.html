@@ -467,8 +467,23 @@
       <input type="text" placeholder="Full Name" required id="fullName">
       <input type="tel" placeholder="Phone Number" required id="phoneNumber">
       <input type="email" placeholder="Email Address" id="email">
-      <input type="date" required id="appointmentDate">
-      <input type="time" required id="appointmentTime">
+      
+      <div class="form-field-group">
+        <label for="appointmentDate" class="form-label">
+          <i class="fas fa-calendar-alt"></i> Select Your Preferred Date
+        </label>
+        <input type="date" required id="appointmentDate" min="">
+        <span class="field-hint">Choose a date for your appointment</span>
+      </div>
+      
+      <div class="form-field-group">
+        <label for="appointmentTime" class="form-label">
+          <i class="fas fa-clock"></i> Select Your Preferred Time
+        </label>
+        <input type="time" required id="appointmentTime">
+        <span class="field-hint">We're open Monday-Friday: 10 AM - 7 PM, Saturday: 9 AM - 6 PM</span>
+      </div>
+      
       <button type="submit">Confirm Booking</button>
     </form>
 

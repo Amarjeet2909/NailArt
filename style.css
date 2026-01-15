@@ -1263,6 +1263,7 @@ a {
 }
 
 .luxury-about-content p {
+    text-align: justify;
     font-size: 1.1rem;
     line-height: 2;
     color: var(--text-muted);
@@ -1414,6 +1415,70 @@ a {
     background: #fff;
     box-shadow: 0 0 0 4px rgba(210,180,140,0.1);
     transform: translateY(-2px);
+}
+
+/* Form Field Groups for Date/Time */
+.form-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 5px;
+    font-family: var(--font-sans);
+}
+
+.form-label i {
+    color: var(--accent);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.field-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    line-height: 1.5;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.form-field-group input[type="date"],
+.form-field-group input[type="time"] {
+    padding: 18px 25px;
+    border-radius: 50px;
+    border: 2px solid #e8e8e8;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.form-field-group input[type="date"]:focus,
+.form-field-group input[type="time"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(210,180,140,0.1);
+    transform: translateY(-2px);
+}
+
+.form-field-group input[type="date"]:hover,
+.form-field-group input[type="time"]:hover {
+    border-color: #d0d0d0;
+    background: #f5f5f5;
 }
 
 .booking-form button {
@@ -1805,5 +1870,26 @@ a {
     .booking-form button {
         font-size: 0.9rem;
         padding: 16px 20px;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    .form-label i {
+        font-size: 1rem;
+    }
+
+    .field-hint {
+        font-size: 0.8rem;
+        padding-left: 28px;
+        margin-top: -3px;
+    }
+
+    .form-field-group input[type="date"],
+    .form-field-group input[type="time"] {
+        padding: 16px 20px;
+        font-size: 0.9rem;
     }
 }

@@ -116,6 +116,13 @@ document.addEventListener('keydown', (e) => {
 // Form submission handling
 const bookingForm = document.getElementById('bookingForm');
 const successMessage = document.getElementById('successMessage');
+const appointmentDateInput = document.getElementById('appointmentDate');
+
+// Set minimum date to today
+if (appointmentDateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    appointmentDateInput.setAttribute('min', today);
+}
 
 if (bookingForm) {
     bookingForm.addEventListener('submit', function(e) {
@@ -139,6 +146,12 @@ if (bookingForm) {
         
         // Reset form
         bookingForm.reset();
+        
+        // Reset minimum date
+        if (appointmentDateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            appointmentDateInput.setAttribute('min', today);
+        }
         
         // Optional: Scroll to top of success message
         setTimeout(() => {
