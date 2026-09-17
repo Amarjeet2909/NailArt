@@ -136,9 +136,12 @@ if (bookingForm) {
             date: document.getElementById('appointmentDate').value,
             time: document.getElementById('appointmentTime').value
         };
-        
-        // Here you would typically send the data to a server
-        // For now, we'll just show the success message
+
+        const whatsappNumber = '916363879354';
+        const whatsappMessage = `Hey !, New Booking Request\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email || 'N/A'}\nDate: ${formData.date}\nTime: ${formData.time} \nThank You...`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.open(whatsappUrl, '_blank');
         
         // Show success message
         successMessage.classList.add('active');
