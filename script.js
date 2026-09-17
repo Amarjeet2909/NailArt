@@ -3,6 +3,8 @@ const burger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav-links');
 const overlay = document.querySelector('.nav-overlay');
 const body = document.body;
+const navbar = document.querySelector('.navbar');
+const scrollProgress = document.querySelector('.scroll-progress');
 
 function toggleMenu() {
     nav.classList.toggle('active');
@@ -29,6 +31,16 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 const topBtn=document.getElementById('scrollTop');
 window.addEventListener('scroll',()=>{
   topBtn.style.display=window.scrollY>300?'block':'none';
+
+  if (navbar) {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }
+
+  if (scrollProgress) {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    scrollProgress.style.width = `${Math.min(progress, 100)}%`;
+  }
 });
 topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 
@@ -40,6 +52,26 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.2});
 document.querySelectorAll('.fade-on-scroll')
 .forEach(el=>observer.observe(el));
+
+const heroImage = document.querySelector('.hero-image-container img');
+const heroTextBox = document.querySelector('.hero-text-box');
+if (heroImage) {
+    if (heroImage.complete) {
+        heroImage.classList.add('loaded');
+    } else {
+        heroImage.addEventListener('load', () => {
+            heroImage.classList.add('loaded');
+        });
+    }
+}
+
+window.addEventListener('mousemove', (e) => {
+    if (!heroTextBox || window.innerWidth <= 768) return;
+
+    const moveX = (e.clientX / window.innerWidth - 0.5) * 10;
+    const moveY = (e.clientY / window.innerHeight - 0.5) * 8;
+    heroTextBox.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+});
 
 // Lightbox functionality
 const lightbox = document.getElementById('lightbox');
